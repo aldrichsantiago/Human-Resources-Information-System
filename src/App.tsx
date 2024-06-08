@@ -1,18 +1,39 @@
-import Sidebar from "./components/Sidebar"
+import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import Root from "./components/Root";
+import EmployeeInformation from "./components/EmployeeInformation";
+import Dashboard from "./components/Dashboard";
+import Payroll from "./components/Payroll";
+import Attendance from "./components/Attendance";
+import Report from "./components/Report";
+import Settings from "./components/Settings";
 
 
-export default function App() {
-  return (
-    <div className="relative min-h-screen md:flex" data-dev-hint="container">
 
-      <Sidebar/>
-      <main id="content" className="flex-1 p-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="px-4 py-6 sm:px-0">
-            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
-          </div>
-        </div>
-      </main>
-    </div>
+export const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Root />}>
+      <Route path="/dashboard" element={<Dashboard/>} />
+
+      <Route path="/employee_information" element={<EmployeeInformation/>}>
+
+      </Route>
+
+      <Route path="/payroll" element={<Payroll/>}>
+
+      </Route>
+
+      <Route path="/attendance" element={<Attendance/>}>
+
+      </Route>
+
+      <Route path="/report" element={<Report/>}>
+
+      </Route>
+
+      <Route path="/settings" element={<Settings/>}>
+
+      </Route>
+
+    </Route>
   )
-}
+);
