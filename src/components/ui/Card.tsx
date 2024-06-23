@@ -10,7 +10,7 @@ export default function Card({ title, data, description, icon, unit }: { title?:
             </span>
         </span>
         <span className='w-full mt-2'>
-            <h1 className="text-2xl  font-bold">{unit} {data?.toString()} </h1>
+            <h1 className="text-2xl  font-bold">{unit} {Number(data).toString()} </h1>
             <p className='text-xs text-stone-600'>{description}</p>
         </span> 
     </span>
