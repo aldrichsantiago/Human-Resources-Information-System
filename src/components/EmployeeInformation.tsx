@@ -7,35 +7,109 @@ import TanstackTable from "./ui/TanstackTable";
   // Information
   const columnHelper = createColumnHelper();
   const columns = [
-    columnHelper.accessor('capsule_id', {
+    columnHelper.accessor('image', {
+      cell: url => <img src={url.getValue()} alt="" className="w-12 h-12 rounded-full bg-white" />
+    }),
+    columnHelper.accessor('employee_id', {
       cell: (info) => info.getValue(),
-      header: () => <span>Capsule ID</span>,
+      header: () => <span>ID</span>,
       footer: (info) => info.column.id,
     }),
-    columnHelper.accessor('capsule_serial', {
+    columnHelper.accessor('full_name', {
       cell: (info) => info.getValue(),
-      header: () => <span>Capsule Serial</span>,
+      header: () => <span>Full Name</span>,
       footer: (info) => info.column.id,
     }),
-    columnHelper.accessor('status', {
+    columnHelper.accessor('position_title', {
       cell: (info) => info.getValue(),
-      header: () => <span>Status</span>,
+      header: () => <span>Position Title</span>,
       footer: (info) => info.column.id,
     }),
-    columnHelper.accessor('landings', {
+    columnHelper.accessor('employment_status', {
       cell: (info) => info.getValue(),
-      header: () => <span>Landings</span>,
+      header: () => <span>Employment Status</span>,
       footer: (info) => info.column.id,
     }),
-    columnHelper.accessor('details', {
+    columnHelper.accessor('department', {
       cell: (info) => info.getValue(),
-      header: () => <span>Details</span>,
+      header: () => <span>Department</span>,
       footer: (info) => info.column.id,
     }),
   ];
 
 export default function EmployeeInformation() {
   const [activeTab, setActiveTab] = useState('dashboard')
+  const [data, setData] = useState([
+    {
+      "employee_id": "C101",
+      "full_name": "dragon1",
+      "employment_status": "retired",
+      "original_launch": "2010-12-08T15:43:00.000Z",
+      "original_launch_unix": 1291822980,
+      "missions": [
+          {
+              "name": "COTS 1",
+              "flight": 7
+          }
+      ],
+      "department": 1,
+      "position_title": "Dragon 1.0",
+      "image":"https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e535720d39923630d5487d7_peep-47.svg",
+      "details": "Reentered after three weeks in orbit",
+      "reuse_count": 0
+    },{
+      "employee_id": "C104",
+      "full_name": "dragon1",
+      "employment_status": "retired",
+      "original_launch": "2010-12-08T15:43:00.000Z",
+      "original_launch_unix": 1291822980,
+      "missions": [
+          {
+              "name": "COTS 1",
+              "flight": 7
+          }
+      ],
+      "department": 1,
+      "position_title": "Dragon 1.0",
+      "image":"https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e535720d39923630d5487d7_peep-47.svg",
+      "details": "Reentered after three weeks in orbit",
+      "reuse_count": 0
+    },{
+      "employee_id": "C103",
+      "full_name": "dragon1",
+      "employment_status": "retired",
+      "original_launch": "2010-12-08T15:43:00.000Z",
+      "original_launch_unix": 1291822980,
+      "missions": [
+          {
+              "name": "COTS 1",
+              "flight": 7
+          }
+      ],
+      "department": 1,
+      "position_title": "Dragon 1.0",
+      "image":"https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e535720d39923630d5487d7_peep-47.svg",
+      "details": "Reentered after three weeks in orbit",
+      "reuse_count": 0
+    },{
+      "employee_id": "C102",
+      "full_name": "dragon1",
+      "employment_status": "retired",
+      "original_launch": "2010-12-08T15:43:00.000Z",
+      "original_launch_unix": 1291822980,
+      "missions": [
+          {
+              "name": "COTS 1",
+              "flight": 7
+          }
+      ],
+      "department": 1,
+      "position_title": "Dragon 1.0",
+      "image":"https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e535720d39923630d5487d7_peep-47.svg",
+      "details": "Reentered after three weeks in orbit",
+      "reuse_count": 0
+    },
+  ])
 
   const tabClasses = {
     active: 'py-2 px-6 cursor-pointer rounded-lg text-gray-100 bg-gray-800',
@@ -45,61 +119,6 @@ export default function EmployeeInformation() {
   const handleTabClick = (option:string) => {
     setActiveTab(option)
   }
-
-  const data = [
-    {
-        "capsule_serial": "C101",
-        "capsule_id": "dragon1",
-        "status": "retired",
-        "original_launch": "2010-12-08T15:43:00.000Z",
-        "original_launch_unix": 1291822980,
-        "missions": [
-            {
-                "name": "COTS 1",
-                "flight": 7
-            }
-        ],
-        "landings": 1,
-        "type": "Dragon 1.0",
-        "details": "Reentered after three weeks in orbit",
-        "reuse_count": 0
-    },
-    {
-        "capsule_serial": "C102",
-        "capsule_id": "dragon1",
-        "status": "retired",
-        "original_launch": "2012-05-22T07:44:00.000Z",
-        "original_launch_unix": 1335944640,
-        "missions": [
-            {
-                "name": "COTS 2",
-                "flight": 8
-            }
-        ],
-        "landings": 1,
-        "type": "Dragon 1.0",
-        "details": "First Dragon spacecraft",
-        "reuse_count": 0
-    },
-    {
-        "capsule_serial": "C103",
-        "capsule_id": "dragon1",
-        "status": "unknown",
-        "original_launch": "2012-10-08T00:35:00.000Z",
-        "original_launch_unix": 1349656500,
-        "missions": [
-            {
-                "name": "CRS-1",
-                "flight": 9
-            }
-        ],
-        "landings": 1,
-        "type": "Dragon 1.0",
-        "details": "First of twenty missions flown under the CRS1 contract",
-        "reuse_count": 0
-    }
-]
-
 
   //Information
   const table = useReactTable({
@@ -119,7 +138,7 @@ export default function EmployeeInformation() {
             <div className="rounded-lg max-h-32 mb-2">
               <PageTitle title='Employee Information' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur consequatur!'/>
             </div>
-            <div className="m-2">
+            <div className="my-2">
               <ul className='flex flex-wrap rounded-lg gap-1'>
                   <li onClick={()=>handleTabClick('dashboard')} className={activeTab == 'dashboard'? tabClasses.active: tabClasses.inactive }>Dashboard</li>
                   <li onClick={()=>handleTabClick('information')} className={activeTab == 'information'? tabClasses.active: tabClasses.inactive }>Information</li>
@@ -168,19 +187,24 @@ export default function EmployeeInformation() {
               </div>  
             </>: activeTab == 'information' ? 
             <>
-              Information
+
+            <div>
+              <div className="my-2 w-full text-right">
+                <button className="py-3 px-4 bg-gray-800 hover:bg-gray-700 rounded-lg text-white font-medium">Add Employee</button>
+              </div>
               <TanstackTable.Table table={table}>
                 <TanstackTable.Caption>
-                  Our products
+                  Our Employees
                   <p className="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
-                    Browse a list of Flowbite products designed to help you work and play, stay organized, get answers, keep in touch, grow your
-                    business, and more.
+                  Browse all of our employees in one table.
                   </p>
                 </TanstackTable.Caption>
 
                 <TanstackTable.THead isSortable />
                 <TanstackTable.TBody />
               </TanstackTable.Table>
+          </div>
+              
 
 
             </>: activeTab == 'performance' ? 
