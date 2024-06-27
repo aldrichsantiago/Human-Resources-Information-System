@@ -8,7 +8,7 @@ import TanstackTable from "./ui/TanstackTable";
   const columnHelper = createColumnHelper();
   const columns = [
     columnHelper.accessor('image', {
-      cell: url => <img src={url.getValue()} alt="" className="w-12 h-12 rounded-full bg-white" />
+      cell: url => <img src={url.getValue()} alt="" className="w-6 h-6 rounded-full bg-white" />
     }),
     columnHelper.accessor('employee_id', {
       cell: (info) => info.getValue(),
@@ -121,7 +121,16 @@ export default function EmployeeInformation() {
   }
 
   //Information
-  const table = useReactTable({
+  const employee_table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+  });
+
+  //Performance
+  const performance_table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
@@ -147,7 +156,7 @@ export default function EmployeeInformation() {
             </div>
             { activeTab == 'dashboard' ? 
             <>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 my-12">
                 <Card
                 title='Total Employee Count'
                 unit='👤'
@@ -192,7 +201,7 @@ export default function EmployeeInformation() {
               <div className="my-2 w-full text-right">
                 <button className="py-3 px-4 bg-gray-800 hover:bg-gray-700 rounded-lg text-white font-medium">Add Employee</button>
               </div>
-              <TanstackTable.Table table={table}>
+              <TanstackTable.Table table={employee_table}>
                 <TanstackTable.Caption>
                   Our Employees
                   <p className="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
@@ -209,7 +218,20 @@ export default function EmployeeInformation() {
 
             </>: activeTab == 'performance' ? 
             <>
-              Performance
+              <div className="my-16">
+                
+                <TanstackTable.Table table={performance_table}>
+                  <TanstackTable.Caption>
+                    Employee's Performance
+                    <p className="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
+                    Browse all of our employees' peformance in one table, see who's performing at their best and those who are not.
+                    </p>
+                  </TanstackTable.Caption>
+
+                  <TanstackTable.THead isSortable />
+                  <TanstackTable.TBody />
+                </TanstackTable.Table>
+              </div>
             </>:<></> }
             
               
