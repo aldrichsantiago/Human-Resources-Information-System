@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import './styles/custom-modal.css'
 
 export default function Sidebar() {
 
@@ -30,7 +31,7 @@ export default function Sidebar() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
             </svg>
             <a href="#" className="block text-white font-bold whitespace-nowrap truncate">
-                HRIS
+                EMPMONITOR
             </a>
         </span>
         <label htmlFor="menu-open" id="mobile-menu-button" className="m-2 p-2 focus:outline-none hover:text-white hover:bg-gray-700 rounded-md">
@@ -46,11 +47,11 @@ export default function Sidebar() {
     <aside id="sidebar" className="bg-gray-800 text-gray-100 md:w-64 w-3/4 space-y-8 pt-8 px-0 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out  md:flex md:flex-col md:justify-between overflow-y-auto" data-dev-hint="sidebar; px-0 for frameless; px-2 for visually inset the navigation">
         <div className="flex flex-col space-y-6" data-dev-hint="optional div for having an extra footer navigation">
             <a href="" className="text-white flex items-center space-x-2 px-4" title="AppName">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8">
+            {/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-            </svg>
+            </svg> */}
 
-                <span className="text-2xl font-extrabold whitespace-nowrap truncate">HRIS</span>
+                <span className="text-2xl font-extrabold whitespace-nowrap truncate">EMPMONITOR</span>
             </a>
 
             <nav data-dev-hint="main navigation">

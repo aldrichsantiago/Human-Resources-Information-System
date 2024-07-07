@@ -11,7 +11,7 @@ import Settings from "./components/Settings";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Root />}>
+    <Route path="/" element={<Root/>} >
       <Route path="/dashboard" element={<Dashboard/>} />
 
       <Route path="/employee_information" element={<EmployeeInformation/>}>

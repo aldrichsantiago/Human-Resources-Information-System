@@ -4,6 +4,9 @@ import TanstackTable from './ui/TanstackTable'
 import { createColumnHelper, getCoreRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import Modal from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
+import ReactSelect from 'react-select';
+import Select from './ui/Select';
+import { Button } from './ui/Input';
 
 const columnHelper = createColumnHelper();
   const columns = [
@@ -130,8 +133,10 @@ export default function Payroll() {
                         <PageTitle title='Payroll' description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur consequatur!'/>
                     </div>
                 </div>
-                <div className='flex justify-end'>
-                    <button className='text-white bg-slate-800 hover:bg-gray-700 py-2 px-8 m-2 rounded-md' onClick={()=>openModal(setPrintModal)}>Print</button>
+                <div className='my-3 flex justify-end'>
+                    <Button 
+                    title="Print"
+                    onClick={()=>openModal(setPrintModal)}/>
                     
                 </div>
                 <TanstackTable.Table table={employee_table}>
@@ -146,9 +151,27 @@ export default function Payroll() {
                 <TanstackTable.TBody />
               </TanstackTable.Table>
             </div>
-            <Modal open={printModal} onClose={()=>closeModal(setPrintModal)} center>
-                <h2>FILTERS</h2>
-
+            <Modal open={printModal} onClose={()=>closeModal(setPrintModal)} center classNames={{modal: 'modal-xs'}}>
+              <div className=" h-[300px]">
+                <h2 className='text-3xl font-bold mb-8'>PRINT</h2>
+                <Select
+                  label_id="filter_1"
+                  label="Payslip Type"
+                  placeholder="Select an option"
+                  className="md:w-[450px]"
+                  options={[
+                    { value: 'payslip v1', label: 'Payslip v1' },
+                    { value: 'payslip v2', label: 'Payslip v2' },
+                    { value: 'payslip v3', label: 'Payslip v3' }
+                  ]}
+                />
+                <div className="w-full flex">
+                </div>
+                <Button
+                title="Print Payslip"
+                />
+              </div>
+             
             </Modal>
         </main>
         

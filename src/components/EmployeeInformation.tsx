@@ -3,6 +3,8 @@ import Card from "./ui/Card";
 import PageTitle from "./ui/PageTitle";
 import { createColumnHelper, getCoreRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import TanstackTable from "./ui/TanstackTable";
+import Modal from "react-responsive-modal";
+import Input, { Button } from "./ui/Input";
 
   // Information
   const columnHelper = createColumnHelper();
@@ -38,6 +40,7 @@ import TanstackTable from "./ui/TanstackTable";
   ];
 
 export default function EmployeeInformation() {
+  const [addEmployee, setAddEmployee] = useState(false)
   const [activeTab, setActiveTab] = useState('dashboard')
   const [data, setData] = useState([
     {
@@ -110,6 +113,9 @@ export default function EmployeeInformation() {
       "reuse_count": 0
     },
   ])
+
+  const openModal = (stateModalFunction:  any) => stateModalFunction(true);
+  const closeModal = (stateModalFunction:  any) => stateModalFunction(false);
 
   const tabClasses = {
     active: 'py-2 px-6 cursor-pointer rounded-lg text-gray-100 bg-gray-800',
@@ -198,8 +204,15 @@ export default function EmployeeInformation() {
             <>
 
             <div>
-              <div className="my-2 w-full text-right">
-                <button className="py-3 px-4 bg-gray-800 hover:bg-gray-700 rounded-lg text-white font-medium">Add Employee</button>
+              <div className="w-full my-3 flex items-center justify-end gap-6">
+                <Input
+                type="text"
+                placeholder="Search an employee"
+                icon="@"
+                />
+                <Button
+                title="Add Employee"
+                />
               </div>
               <TanstackTable.Table table={employee_table}>
                 <TanstackTable.Caption>
@@ -212,14 +225,25 @@ export default function EmployeeInformation() {
                 <TanstackTable.THead isSortable />
                 <TanstackTable.TBody />
               </TanstackTable.Table>
+              <Modal open={addEmployee} onClose={()=>closeModal(setAddEmployee)} center classNames={{modal: 'modal-xs'}}>
+              <div className=" h-[600px]">
+                
+              </div>
+             
+            </Modal>
           </div>
               
 
 
             </>: activeTab == 'performance' ? 
             <>
-              <div className="my-16">
+              <div>
+              <div className="my-3 flex items-center justify-end">
                 
+                <Button
+                title="Edit Employee"
+                />
+              </div>
                 <TanstackTable.Table table={performance_table}>
                   <TanstackTable.Caption>
                     Employee's Performance
